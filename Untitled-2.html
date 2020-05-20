@@ -1,0 +1,44 @@
+<html>
+
+<head></head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // setPass(state, pass) {
+    //     if (pass.RoomName && state.queues[pass.RoomName] && state.queues[pass.RoomName].pass instanceof Array) {
+    //         state.queues[pass.RoomName].pass.push(pass)
+    //     }
+    // }
+
+    const state = {
+        queues: [
+            {
+                RoomName: '123',
+                pass: [{
+                    item: 1001
+                }]
+            }
+        ]
+    }
+    // const temp1 = {}
+    // temp1=state.queues.find(s => s.RoomName == '123')
+
+    let temp1 = {}
+    Object.assign(temp1,state.queues.find(s => s.RoomName == '123')) 
+    console.log(temp1.prototype === state.prototype)
+    temp1=JSON.parse(JSON.stringify(state.queues.find(s => s.RoomName == '123')))
+    console.log(temp1.prototype === state.prototype)
+
+    const temp2 = state.queues.filter(s => s.RoomName == '123')   
+    console.log(temp2.prototype === state.prototype)
+
+    console.log('state开始:', JSON.stringify(state))
+
+    temp1.RoomName = '456'
+
+    console.log('state结束:', JSON.stringify(state))
+</script>

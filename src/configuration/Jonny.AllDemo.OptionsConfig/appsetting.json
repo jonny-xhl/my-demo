@@ -1,0 +1,24 @@
+{
+  "AppConfig": {
+    "RemoteService": "http://localhost:44371",
+    "Hospital": {
+      "Name": "重庆市妇幼保健院 一分院",
+      "Tel": "023-56781234",
+      "Level": 3
+    }
+  },
+  "IdentityClients": {
+    "Default": {
+      "GrantType": "",
+      "ClientId": "Jonny.AllDemo.OptionsConfig",
+      "ClientSecret": "1q2w3E*",
+      "UserName": "admin",
+      "UserPassword": "1q2w3E*",
+      "Authority": "https://localhost:44371",
+      "Scope": "OptionsConfig"
+    }
+  },
+  "Logging": {
+    "Level": "Infomation"
+  }
+}

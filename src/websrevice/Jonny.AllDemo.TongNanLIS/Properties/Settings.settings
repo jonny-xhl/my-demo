@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Jonny.AllDemo.TongNanLIS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Jonny_AllDemo_TongNanLIS_TongNanLis_IWSYXLisservice" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://a8xi7j.natappfree.cc:5500/soap/IWSYXLis</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

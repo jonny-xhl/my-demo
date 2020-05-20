@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="IWSYXLisservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="HelloWorld0Request" />
+  <message name="HelloWorld0Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <message name="Execute1Request">
+    <part name="Value" type="xs:string" />
+  </message>
+  <message name="Execute1Response">
+    <part name="OutValue" type="xs:string" />
+    <part name="return" type="xs:boolean" />
+  </message>
+  <message name="Execute22Request">
+    <part name="Value" type="xs:string" />
+  </message>
+  <message name="Execute22Response">
+    <part name="return" type="xs:string" />
+  </message>
+  <portType name="IWSYXLis">
+    <operation name="HelloWorld">
+      <input message="tns:HelloWorld0Request" />
+      <output message="tns:HelloWorld0Response" />
+    </operation>
+    <operation name="Execute">
+      <input message="tns:Execute1Request" />
+      <output message="tns:Execute1Response" />
+    </operation>
+    <operation name="Execute2">
+      <input message="tns:Execute22Request" />
+      <output message="tns:Execute22Response" />
+    </operation>
+  </portType>
+  <binding name="IWSYXLisbinding" type="tns:IWSYXLis">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="HelloWorld">
+      <soap:operation soapAction="urn:uDataWSYXLisIntf-IWSYXLis#HelloWorld" style="rpc" />
+      <input message="tns:HelloWorld0Request">
+        <soap:body use="encoded" namespace="urn:uDataWSYXLisIntf-IWSYXLis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output message="tns:HelloWorld0Response">
+        <soap:body use="encoded" namespace="urn:uDataWSYXLisIntf-IWSYXLis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Execute">
+      <soap:operation soapAction="urn:uDataWSYXLisIntf-IWSYXLis#Execute" style="rpc" />
+      <input message="tns:Execute1Request">
+        <soap:body use="encoded" namespace="urn:uDataWSYXLisIntf-IWSYXLis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output message="tns:Execute1Response">
+        <soap:body use="encoded" namespace="urn:uDataWSYXLisIntf-IWSYXLis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="Execute2">
+      <soap:operation soapAction="urn:uDataWSYXLisIntf-IWSYXLis#Execute2" style="rpc" />
+      <input message="tns:Execute22Request">
+        <soap:body use="encoded" namespace="urn:uDataWSYXLisIntf-IWSYXLis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output message="tns:Execute22Response">
+        <soap:body use="encoded" namespace="urn:uDataWSYXLisIntf-IWSYXLis" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="IWSYXLisservice">
+    <port name="IWSYXLisPort" binding="tns:IWSYXLisbinding">
+      <soap:address location="http://a8xi7j.natappfree.cc:5500/soap/IWSYXLis" />
+    </port>
+  </service>
+</definitions>

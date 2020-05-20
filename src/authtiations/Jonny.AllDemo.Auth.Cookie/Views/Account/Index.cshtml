@@ -1,0 +1,29 @@
+﻿@model LoginDto
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>登录</h1>
+<form asp-controller="Account" asp-action="Login" method="post">
+    <div class="form-group">
+        <label asp-for="Account">用户名</label>
+        <input asp-for="Account" type="text" class="form-control" placeholder="输入账号名" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="col-form-label">密码</label>
+        <input asp-for="Password" type="password" class="form-control" placeholder="输入密码"/>
+    </div>
+    <button class="btn btn-primary" type="submit">登录</button>
+</form>
+@if(!string.IsNullOrWhiteSpace(ViewBag?.Error))
+{
+    <div class="card">
+        <div class="card-header">
+            错误信息
+        </div>
+        <div class="card-body" style="color:red">
+            @ViewBag?.Error
+        </div>
+    </div>
+}
+

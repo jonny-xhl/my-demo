@@ -1,0 +1,19 @@
+﻿@model UserModel;
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (!string.IsNullOrWhiteSpace(Model.Name))
+    {
+        <h3>
+            欢迎 @Model.Account
+        </h3>
+        <form asp-controller="Account" asp-action="Logout">
+            <button type="submit" class="btn btn-primary">注销</button>
+        </form>
+    }
+</div>

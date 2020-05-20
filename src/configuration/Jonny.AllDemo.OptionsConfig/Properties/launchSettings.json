@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Jonny.AllDemo.OptionsConfig": {
+      "commandName": "Project",
+      "commandLineArgs": "CommandLine1=key1  --CommandLine2=key2 /CommandLine3=key3 --c=newKey1",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "launchSetting.json": {
+      "commandName": "Executable"
+    }
+  }
+}
