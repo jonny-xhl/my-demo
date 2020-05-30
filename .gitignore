@@ -250,3 +250,4 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+/src/files/Jonny.AllDemo.StaticFile/wwwroot/libs/bootstrap

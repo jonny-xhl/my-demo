@@ -61,7 +61,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jonny.AllDemo.CyTcpClient",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core-config", "core-config", "{CD70ABC3-F359-43F0-87DB-2F900DB65EBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jonny.AllDemo.OptionsConfig", "src\configuration\Jonny.AllDemo.OptionsConfig\Jonny.AllDemo.OptionsConfig.csproj", "{B7CAAA8A-D113-44F6-97B1-E77DD0161B6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jonny.AllDemo.OptionsConfig", "src\configuration\Jonny.AllDemo.OptionsConfig\Jonny.AllDemo.OptionsConfig.csproj", "{B7CAAA8A-D113-44F6-97B1-E77DD0161B6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{6B1CADF4-BEF2-4F53-A96F-A885AFFA5147}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jonny.AllDemo.StaticFile", "src\files\Jonny.AllDemo.StaticFile\Jonny.AllDemo.StaticFile.csproj", "{2207AC8C-7FC8-482F-9615-67DBBED0650E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,6 +149,10 @@ Global
 		{B7CAAA8A-D113-44F6-97B1-E77DD0161B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7CAAA8A-D113-44F6-97B1-E77DD0161B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7CAAA8A-D113-44F6-97B1-E77DD0161B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2207AC8C-7FC8-482F-9615-67DBBED0650E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2207AC8C-7FC8-482F-9615-67DBBED0650E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2207AC8C-7FC8-482F-9615-67DBBED0650E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2207AC8C-7FC8-482F-9615-67DBBED0650E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -176,6 +184,8 @@ Global
 		{1B862214-CE55-4D47-A732-86BB2F1F9279} = {902DB5A7-A7B7-476F-9015-4C2B3F16A288}
 		{CD70ABC3-F359-43F0-87DB-2F900DB65EBE} = {7502D5C6-D2BE-439E-B7A0-91DCDD89B749}
 		{B7CAAA8A-D113-44F6-97B1-E77DD0161B6F} = {CD70ABC3-F359-43F0-87DB-2F900DB65EBE}
+		{6B1CADF4-BEF2-4F53-A96F-A885AFFA5147} = {7502D5C6-D2BE-439E-B7A0-91DCDD89B749}
+		{2207AC8C-7FC8-482F-9615-67DBBED0650E} = {6B1CADF4-BEF2-4F53-A96F-A885AFFA5147}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {756434BA-0B0E-4D64-8EBB-39203B3C2515}
