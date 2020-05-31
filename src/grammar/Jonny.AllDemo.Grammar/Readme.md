@@ -47,13 +47,16 @@ class Program
 测试结果：
 
 - UsingBlock block = new UsingBlock()
+
 这个是常见的实例化我就不做解释，直接由内部GC托管处理
 
 -  using UsingBlock block = new UsingBlock();
+
 这里和常规的using写法很相似，但是在释放的时候时机是不一样的。
 这种写法是取定义的当前`作用域`执行完时才会自动去释放。
 
 - using (UsingBlock block = new UsingBlock())
+
 ```csharp
 using (UsingBlock block = new UsingBlock())
 {
