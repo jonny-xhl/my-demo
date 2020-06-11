@@ -21,7 +21,7 @@
 
 ## 练习
 
-创建自定义`ViewComponent`
+#### 创建自定义`ViewComponent`
 
 ```chsarp
 public class PriorityListViewComponent : ViewComponent
@@ -46,7 +46,7 @@ public class PriorityListViewComponent : ViewComponent
     }
 }
 ```
-创建视图
+#### 创建视图
 ```
 @model IEnumerable<TodoItem>
 <div class="text-center">
@@ -58,3 +58,29 @@ public class PriorityListViewComponent : ViewComponent
 </div>
 ```
 > 注意：这里创建的视图和page是不一样的，不能有@page;路径一定要在以视图名称文件夹目录下;
+
+#### 使用组件
+- InvokeAsync方法调用
+```
+@await Component.InvokeAsync(typeof(PriorityListViewComponent))
+```
+    - InvokeAsync(this IViewComponentHelper helper, string name)
+    - InvokeAsync(this IViewComponentHelper helper, Type componentType)
+    - InvokeAsync<TComponent>(this IViewComponentHelper helper)
+    - InvokeAsync<TComponent>(this IViewComponentHelper helper, object arguments)
+    上诉列表中提供了四个扩展方法，都可以调用，并且可以传递参数
+- vc:帮助标记中使用
+```
+<vc:priority-list> 
+</vc:priority-list>
+```
+使用帮助程序传递参数和常规的element写属性是一致的
+例如：
+```
+<vc:priority-list
+  paramter1="p1value"
+  paramter2="p2value"
+> 
+</vc:priority-list>
+```
+> 采用Pascal的模式组件名称，这和vue中的组件使用基本一致

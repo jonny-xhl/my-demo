@@ -5,7 +5,12 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>    
-    @await Component.InvokeAsync(typeof(PriorityListViewComponent))
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Component.InvokeAsync</h1>
+        @await Component.InvokeAsync(typeof(PriorityListViewComponent))
+
+        <h1 class="display-4">帮助标签</h1>
+        <vc:priority-list> 
+
+        </vc:priority-list>
+    </div>
