@@ -15,16 +15,26 @@ namespace Jonny.AdllDemo.Mvc.ViewComponents.Pages
 
         [BindProperty]
         public Privacy PrivacyM { get; set; }
+
+        [BindProperty]
+        public IEnumerable<Privacy> Privacies { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchName { get; set; }
         public PrivacyModel(ILogger<PrivacyModel> logger)
         {
             _logger = logger;
         }
 
-        public void OnGet(int? id)
-        {
-            PrivacyM = PrivacyStore.GetPrivacies().FirstOrDefault(p => p.Id == id);
-        }
+        //public void OnGet(int? id)
+        //{
+        //    PrivacyM = PrivacyStore.GetPrivacies().FirstOrDefault(p => p.Id == id);
+        //}
 
+        public void OnGet()
+        {
+            Privacies = PrivacyStore.GetPrivacies().Where(p => p.Name.Contains(SearchName??""));
+        }
         public void OnPostAsync()
         {
             HttpContext.Response.WriteAsync($"{PrivacyM.Id},{PrivacyM.Name}");

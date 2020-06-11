@@ -1,4 +1,5 @@
-﻿@page "{id:int?}"
+﻿@*@page "{id:int?}"*@
+@page "{searchName?}"
 @model PrivacyModel
 @{
     ViewData["Title"] = "Privacy Policy";
@@ -8,9 +9,18 @@
 <p>Use this page to detail your site's privacy policy.</p>
 <div class="card">
     <div class="card-body">
+        @*<h3>id路由模板测试</h3>
         <ul>
             <li>@Model?.PrivacyM?.Id</li>
             <li>@Model?.PrivacyM?.Name</li>
-        </ul>
+        </ul>*@
+        <h3>搜索路由模板测试</h3>
+        @foreach (var item in Model.Privacies)
+        {
+            <ul>
+                <li>@item?.Id</li>
+                <li>@item?.Name</li>
+            </ul>
+        }
     </div>
 </div>

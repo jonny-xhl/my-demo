@@ -87,7 +87,7 @@ public class PriorityListViewComponent : ViewComponent
 > 采用Pascal的模式组件名称，这和vue中的组件使用基本一致
 
 # @page "{id:int?}"
-在razor page页面中加入路由模板`{id:int?}`。对应的后台代码中加入参数，这样就可以接收到。
+在razor page页面中加入路由模板`{id:int?}`,这里`?`表示可空。对应的后台代码中加入参数，这样就可以接收到。
 ```
 public void OnGet(int? id)
 {
@@ -96,3 +96,6 @@ public void OnGet(int? id)
 ```
 > 经测试当没有添加路由模板时候是404
 关于`@page`参考官方文档（https://docs.microsoft.com/zh-cn/aspnet/core/tutorials/razor-pages/page?view=aspnetcore-3.1&tabs=visual-studio）
+
+# @page "{searchName?}"
+匹配搜索，访问`https://localhost:5001/Privacy/f`就会绑定到后台`Model`的`SearchName`属性下。
