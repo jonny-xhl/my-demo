@@ -1,4 +1,5 @@
-﻿## 引言
+﻿# ViewCompoment记录
+## 引言
 此项目用于记录学习ViewComponent，由于在abp.vnext中对mvc做了很强的封装，asp.net core mvc中的相关知识需要进行一个补充。
 
 #### 视图组件描述
@@ -84,3 +85,14 @@ public class PriorityListViewComponent : ViewComponent
 </vc:priority-list>
 ```
 > 采用Pascal的模式组件名称，这和vue中的组件使用基本一致
+
+# @page "{id:int?}"
+在razor page页面中加入路由模板`{id:int?}`。对应的后台代码中加入参数，这样就可以接收到。
+```
+public void OnGet(int? id)
+{
+    PrivacyM = PrivacyStore.GetPrivacies().FirstOrDefault(p => p.Id == id);
+}
+```
+> 经测试当没有添加路由模板时候是404
+关于`@page`参考官方文档（https://docs.microsoft.com/zh-cn/aspnet/core/tutorials/razor-pages/page?view=aspnetcore-3.1&tabs=visual-studio）
