@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/17/2020 10:35:36" ReportInfo.Modified="07/20/2020 09:46:52" ReportInfo.CreatorVersion="1.9.9.0">
+  <Dictionary>
+    <TableDataSource Name="Note" ReferenceName="Data.Note" DataType="System.Int32" Enabled="true">
+      <Column Name="Seq" DataType="System.String"/>
+      <Column Name="WaitCount" DataType="System.Int32"/>
+      <Column Name="BusinessName" DataType="System.String"/>
+      <Column Name="WindowsNames" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Left="179.55" Top="9.45" Width="94.5" Height="18.9" Text="重庆城银科技取号系统" Font="宋体, 9pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="18.9"/>
+    <DataBand Name="Data1" Top="64.7" Width="718.2" Height="94.5" DataSource="Note">
+      <TextObject Name="Text3" Left="122.85" Top="9.45" Width="75.6" Height="18.9" Text="[Note.Seq]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text4" Left="349.65" Top="9.45" Width="113.4" Height="18.9" Text="[Note.WaitCount]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text5" Left="113.4" Top="56.7" Width="141.75" Height="18.9" Text="[Note.BusinessName]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text6" Left="359.1" Top="66.15" Width="132.3" Height="18.9" Text="[Note.WindowsNames]" VertAlign="Center" Font="宋体, 9pt"/>
+      <TextObject Name="Text7" Left="47.25" Top="9.45" Width="56.7" Height="18.9" Text="号码：" Font="宋体, 9pt"/>
+      <TextObject Name="Text8" Left="255.15" Top="9.45" Width="85.05" Height="18.9" Text="等候人数：" Font="宋体, 9pt"/>
+      <TextObject Name="Text9" Left="264.6" Top="66.15" Width="85.05" Height="18.9" Text="办理窗口：" Font="宋体, 9pt"/>
+      <TextObject Name="Text10" Left="28.35" Top="56.7" Width="75.6" Height="18.9" Text="受理业务：" Font="宋体, 9pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="163.2" Width="718.2" Height="47.25">
+      <TextObject Name="Text2" Left="18.9" Width="245.7" Height="37.8" Text="温馨提示：请保管好自己的随身贵重物品" VertAlign="Center" Font="宋体, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

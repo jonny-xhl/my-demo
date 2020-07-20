@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FastReport;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace Jonny.AllDemo.SQLiteFirst
             InitializeComponent();
             btnInitBusiness.Click += InitBusiness;
         }
+        private readonly static object _lock = new object();
         private void InitBusiness(object sender, EventArgs e)
         {
             SQLiteConnection conn = null;
@@ -134,6 +136,7 @@ namespace Jonny.AllDemo.SQLiteFirst
                 lbl业务.Text = note.BusinessName;
                 lbl受理窗口.Text = note.WindowsNames;
             }));
+            Print(note);
         }
 
         private void btn健康体检_Click(object sender, EventArgs e)
@@ -151,6 +154,51 @@ namespace Jonny.AllDemo.SQLiteFirst
             var businessNum = "B";
             var name = "方案定制-职工体检";
             Ticket(businessId, name, businessNum);
+        }
+
+        /// <summary>
+        /// 打印
+        /// </summary>
+        /// <param name="templateFileName">模板文件名称</param>
+        /// <param name="printer">打印机名称</param>
+        private bool Print(NoteDto note, string templateFileName = @"E:\studyspace\all demo\Jonny.AllDemo\src\sqlite\Jonny.AllDemo.SQLiteFirst\frxs\test.frx", string printer = "Microsoft Print to PDF")
+        {
+            lock (_lock)
+            {
+                try
+                {
+                    using (Report report = new Report())
+                    {
+                        report.Load(templateFileName);
+                        DataSet ds = new DataSet();
+                        var dt = new DataTable("Note");
+                        dt.Columns.Add(new DataColumn("Seq", typeof(String)));
+                        dt.Columns.Add(new DataColumn("WaitCount", typeof(Int32)));
+                        dt.Columns.Add(new DataColumn("BusinessName", typeof(String)));
+                        dt.Columns.Add(new DataColumn("WindowsNames", typeof(String)));
+                        dt.Rows.Add(note.Seq, note.WaitCount, note.BusinessName, note.WindowsNames);
+
+                        ds.Tables.Add(dt);
+
+                        report.RegisterData(ds);
+
+                        // 集合
+                        //var dataSet = new List<NoteDto>();
+                        //dataSet.Add(note);
+                        //report.RegisterData(dataSet, "Note");
+                        report.PrintSettings.Printer = printer;
+                        //report.PrintSettings.ShowDialog = true;
+                        report.Print();
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+
+            }
+
         }
     }
 }

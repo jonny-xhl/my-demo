@@ -32,6 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FastReport">
+      <HintPath>..\libs\fastreport\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Bars">
+      <HintPath>..\libs\fastreport\FastReport.Bars.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Editor">
+      <HintPath>..\libs\fastreport\FastReport.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
