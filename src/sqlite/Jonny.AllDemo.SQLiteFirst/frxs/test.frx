@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="07/17/2020 10:35:36" ReportInfo.Modified="07/20/2020 09:46:52" ReportInfo.CreatorVersion="1.9.9.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/17/2020 10:35:36" ReportInfo.Modified="07/20/2020 09:50:46" ReportInfo.CreatorVersion="1.9.9.0">
   <Dictionary>
     <TableDataSource Name="Note" ReferenceName="Data.Note" DataType="System.Int32" Enabled="true">
       <Column Name="Seq" DataType="System.String"/>
@@ -10,7 +10,7 @@
   </Dictionary>
   <ReportPage Name="Page1">
     <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
-      <TextObject Name="Text1" Left="179.55" Top="9.45" Width="94.5" Height="18.9" Text="重庆城银科技取号系统" Font="宋体, 9pt"/>
+      <TextObject Name="Text1" Left="160.65" Top="9.45" Width="160.65" Height="18.9" Text="重庆城银科技取号系统" Font="宋体, 9pt"/>
     </ReportTitleBand>
     <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="18.9"/>
     <DataBand Name="Data1" Top="64.7" Width="718.2" Height="94.5" DataSource="Note">

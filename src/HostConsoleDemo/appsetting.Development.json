@@ -1,0 +1,14 @@
+﻿{
+  "Server": {
+    "Api": "https://localhost:44377"
+  },
+  "HelloOptions": {
+    "SayStr": "Hello",
+    "Interval": 3
+  },
+  "Logging": {
+    "LogLevel": {
+      "Microsoft": "Warning"
+    }
+  }
+}

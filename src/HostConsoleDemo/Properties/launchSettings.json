@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HostConsoleDemo": {
+      "commandName": "Project",
+      "commandLineArgs": "environment=Development"
+    }
+  }
+}

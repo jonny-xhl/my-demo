@@ -1,0 +1,15 @@
+﻿{
+  "Server": {
+    "Api": "http://192.168.3.221:44377"
+  },
+  "HelloOptions": {
+    "SayStr": "Hello World",
+    "Interval": 5
+
+  },
+  "Logging": {
+    "LogLevel": {
+      "Microsoft": "Warning"
+    }
+  }
+}

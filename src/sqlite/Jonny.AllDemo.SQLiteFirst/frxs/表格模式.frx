@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="07/21/2020 16:41:01" ReportInfo.Modified="07/21/2020 16:53:13" ReportInfo.CreatorVersion="1.9.9.0">
+  <Dictionary>
+    <TableDataSource Name="Note" ReferenceName="Data.Note" DataType="System.Int32" Enabled="true">
+      <Column Name="Seq" DataType="System.String"/>
+      <Column Name="WaitCount" DataType="System.Int32"/>
+      <Column Name="BusinessName" DataType="System.String"/>
+      <Column Name="WindowsNames" DataType="System.String"/>
+    </TableDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="80" PaperHeight="80" Guides="37.8,170.1,0,189.01,89.76">
+    <ReportTitleBand Name="ReportTitle1" Width="226.8" Height="37.8" Guides="9.45,28.35">
+      <TextObject Name="Text1" Left="37.8" Top="9.45" Width="132.3" Height="18.9" Text="重庆城银科技叫号系统" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+    </ReportTitleBand>
+    <DataBand Name="Data1" Top="38.64" Width="226.8" Height="75.6" Guides="0,75.6,18.9,37.8,56.7" DataSource="Note">
+      <TableObject Name="Table1" Width="189.01" Height="75.6">
+        <TableColumn Name="Column1" Width="89.76"/>
+        <TableColumn Name="Column2" Width="99.25"/>
+        <TableRow Name="Row1">
+          <TableCell Name="Cell1" Text="号    码：" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell2" Text="[Note.Seq]" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row2">
+          <TableCell Name="Cell6" Text="等候人数：" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell7" Text="[Note.WaitCount]" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row3">
+          <TableCell Name="Cell11" Text="受理业务：" Font="宋体, 9pt"/>
+          <TableCell Name="Cell12" Text="[Note.BusinessName]" Font="宋体, 9pt"/>
+        </TableRow>
+        <TableRow Name="Row4">
+          <TableCell Name="Cell16" Text="办理窗口：" Font="宋体, 9pt"/>
+          <TableCell Name="Cell17" Text="[Note.WindowsNames]" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="115.08" Width="226.8" Height="18.9" Guides="0,18.9">
+      <TextObject Name="Text2" Width="189" Height="18.9" Text="温馨提示：请保管好自己的随身贵重物品" VertAlign="Center" Font="宋体, 9pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
