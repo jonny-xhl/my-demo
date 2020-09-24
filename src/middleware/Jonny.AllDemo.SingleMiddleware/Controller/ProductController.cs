@@ -10,7 +10,6 @@ namespace Jonny.AllDemo.SingleMiddleware.Controller
     {
         private int time = 1;
         private readonly IHostApplicationLifetime _lifetime;
-
         public ProductController(IProductAppService productAppService1,
             IProductAppService productAppService2,
             IOrderAppService orderAppService1,
