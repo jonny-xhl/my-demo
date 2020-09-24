@@ -15,15 +15,16 @@ namespace myapp
                 new User("向洪林",25),
                 new User("xhl",25),
             };
+            var s=list.Union(new List<User> { new User("x",2) }).ToList();
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine("开始：" + item.name);
+            //}
+            //var temp = list.Where(u => u.name == "jonny").FirstOrDefault();
+            //temp.name = "alibaba";
             foreach (var item in list)
             {
-                Console.WriteLine("开始：" + item.name);
-            }
-            var temp = list.Where(u => u.name == "jonny").FirstOrDefault();
-            temp.name = "alibaba";
-            foreach (var item in list)
-            {
-                Console.WriteLine("结束：" + item.name);
+                Console.WriteLine(item.name);
             }
             Console.ReadLine();
         }
