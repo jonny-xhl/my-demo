@@ -98,26 +98,26 @@ service.AddTransient<ITransientTestAppService, TransientTestAppService>()
 
 - 开始请求：
 
-输入**http://localhost:5002/get**， 这是因为配置了 `UseUrls`,也可以**直接使用**`UseSetting("urls"")`。
-
-> 使用`UseSetting`的key默认定义在`WebHostDefaults`和`HostDefaults`中
-
-为了验证问题我们请求两次。
-
-![开始请求](./docs/first-get.png)
-
-![中间件是否是单例](./docs/mdware-singleton.png)
-
-**分析总结：**
-从两次请求中可以确定不管是强类型的中间件还是按照约定（弱类型）的中间件都是单例的（Singleton）
-
-这里穿插一下关于Singleton\Scoped\Transient生命周期
-**控制台输出：**
-![开始请求输出](./docs/mdware-invoke.png)
-**分析总结：**
-- Scoped服务请求中只会创建一次并且请求完成后释放
-- Transient服务每一次都会重新创建并且请求完成后全部释放
-- Singleton整个应用程序周期内只会创建一次并且直到应用程序关闭时才会释放（慎用慎选择）
+    输入**http://localhost:5002/get**， 这是因为配置了 `UseUrls`,也可以**直接使用**`UseSetting("urls"")`。
+    
+    > 使用`UseSetting`的key默认定义在`WebHostDefaults`和`HostDefaults`中
+    
+    为了验证问题我们请求两次。
+    
+    ![开始请求](./docs/first-get.png)
+    
+    ![中间件是否是单例](./docs/mdware-singleton.png)
+    
+    **分析总结：**
+    从两次请求中可以确定不管是强类型的中间件还是按照约定（弱类型）的中间件都是单例的（Singleton）
+    
+    这里穿插一下关于Singleton\Scoped\Transient生命周期
+    **控制台输出：**
+    ![开始请求输出](./docs/mdware-invoke.png)
+    **分析总结：**
+    - Scoped服务请求中只会创建一次并且请求完成后释放
+    - Transient服务每一次都会重新创建并且请求完成后全部释放
+    - Singleton整个应用程序周期内只会创建一次并且直到应用程序关闭时才会释放（慎用慎选择）
 
 #### 4.2 Singleton服务中注入Scoped服务产生内存泄露?
 
@@ -130,13 +130,14 @@ service.AddTransient<ITransientTestAppService, TransientTestAppService>()
 
 ![scoped释放](./docs/md-invoke-dispose.png)
 **分析总结：**
-从图中画线中能看出请求完成后只有invoke方法中的scoped\transient服务释放了，中间件构造中的任何类型服务都不会得到释放，所以需要在中间件使用
-关于非singleten服务时在方法中进行注入，不要使用构造注入，这是为什么呢？
 
-其实invoke方法中的服务是通过子容器（context.RequestServices）创建而来的，所以跟随请求完成子容器释放也就会释放掉子容器内创建出的服务。
-context.RequestServices是由IApplicationBuilder.ApplicationServices根容器创建而来的。
-
-以上内容也只是使用中间件这种特殊来进行了测试，那么怎么来验证Singleton服务中注入scoped来进行验证呢？自行尝试？应该是不可以的哦？`ServiceProviderOptions`。
+    从图中画线中能看出请求完成后只有invoke方法中的scoped\transient服务释放了，中间件构造中的任何类型服务都不会得到释放，所以需要在中间件使用
+    关于非singleten服务时在方法中进行注入，不要使用构造注入，这是为什么呢？
+    
+    其实invoke方法中的服务是通过子容器（context.RequestServices）创建而来的，所以跟随请求完成子容器释放也就会释放掉子容器内创建出的服务。
+    context.RequestServices是由IApplicationBuilder.ApplicationServices根容器创建而来的。
+    
+    以上内容也只是使用中间件这种特殊来进行了测试，那么怎么来验证Singleton服务中注入scoped来进行验证呢？自行尝试？应该是不可以的哦？`ServiceProviderOptions`。
 
 #### 4.3 怎么避免中间件、Singleton服务中使用Scoped服务不产生内存泄漏?
 
