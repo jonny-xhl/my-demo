@@ -20,7 +20,6 @@ namespace Jonny.AllDemo.SingleMiddleware
                 .ConfigureWebHostDefaults(webHostBuilder =>
                 {
                     webHostBuilder.UseUrls("http://0.0.0.0:5002");
-
                     webHostBuilder.ConfigureServices(service =>
                     {
                         service.AddMvc();
