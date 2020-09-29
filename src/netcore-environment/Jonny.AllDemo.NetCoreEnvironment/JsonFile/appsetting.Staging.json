@@ -1,0 +1,6 @@
+﻿{
+    "ConnectionString":{
+        "Default":"Database=StagingDB"
+    },
+    "a":"A"
+}

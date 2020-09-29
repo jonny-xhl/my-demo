@@ -10,6 +10,8 @@ namespace Jonny.AllDemo.LambdaExpression
             #region invoke
 
             {
+
+                Console.WriteLine(string.Format("106{0}", null));
                 Console.WriteLine(SumMation1().Invoke(1, 2));
 
                 Console.WriteLine(SumMation2().Invoke(1, 2));
