@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Jonny.AllDemo.NetCoreEnvironment.StartFilter
 {
-    public class MyStartupFilter:IStartupFilter
+    public class MyStartupFilter : IStartupFilter
     {
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next)
         {

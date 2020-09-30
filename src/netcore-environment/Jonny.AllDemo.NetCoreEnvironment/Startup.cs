@@ -20,6 +20,13 @@ namespace Jonny.AllDemo.NetCoreEnvironment
 
         public void ConfigureServices(IServiceCollection services)
         {
+            Console.WriteLine("系统服务总数：{0}", services.Count());
+            foreach (var service in services)
+            {
+                Console.WriteLine("serviceType:{0};ImplType:{1},lifeTime:{2}", service.ServiceType,
+                    service.ImplementationType, service.Lifetime);
+            }
+
             ////IMiddleware需要主动注册
             services.AddSingleton<AuthticationMiddleware>();
             services.AddSingleton<IStartupFilter, MyStartupFilter>();
@@ -31,7 +38,8 @@ namespace Jonny.AllDemo.NetCoreEnvironment
             app.UseRouting();
             app.UseEndpoints(builder =>
             {
-                builder.MapGet("login", async context => { await context.Response.WriteAsync("request success!"); });
+                builder.MapGet("login",
+                    async context => { await context.Response.WriteAsync("request success!"); });
             });
         }
     }
