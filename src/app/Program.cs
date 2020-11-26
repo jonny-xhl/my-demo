@@ -26,18 +26,37 @@ namespace myapp
             // {
             //     Console.WriteLine(item.name);
             // }
-            while (Console.ReadKey().KeyChar=='u')
-            {
-                //只有被调用的时候才会被实例化
-                var user = User.Instance;
-            }
+            //while (Console.ReadKey().KeyChar == 'u')
+            //{
+            //    //只有被调用的时候才会被实例化
+            //    var user = User.Instance;
+            //}
+            Test();
             Console.ReadLine();
+        }
+
+        static void Test()
+        {
+            var post = "中华人民共和国,博客园,我是Jonny";
+            var txtKV = new Dictionary<string, string>
+            {
+                {"Jonny","向洪林" },
+                {"博客园","cnblogs" },
+                {"中华","China" }
+            };
+            Console.WriteLine($"文章:{post}");
+            foreach (var item in txtKV)
+            {
+                post = post.Replace(item.Key, item.Value);
+            }
+            Console.WriteLine("===============================");
+            Console.WriteLine($"替换后:{post}");
         }
     }
 
     internal class User
     {
-        public static readonly User Instance=new User();
+        public static readonly User Instance = new User();
 
         public User()
         {

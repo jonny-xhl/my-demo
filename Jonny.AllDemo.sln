@@ -91,17 +91,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "websocket", "websocket", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jonny.AllDemo.WebSocketTest", "src\websocket\Jonny.AllDemo.WebSocketTest\Jonny.AllDemo.WebSocketTest.csproj", "{DD8BF147-EECF-48EA-9550-EFBB3ADECE6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostConsoleDemo", "src\HostConsoleDemo\HostConsoleDemo.csproj", "{42D01681-C6F5-487C-911A-F9129AC5F8E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostConsoleDemo", "src\HostConsoleDemo\HostConsoleDemo.csproj", "{42D01681-C6F5-487C-911A-F9129AC5F8E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jonny.AllDemo.SingleMiddleware", "src\middleware\Jonny.AllDemo.SingleMiddleware\Jonny.AllDemo.SingleMiddleware.csproj", "{BF15D359-7A79-4251-AAFB-6C4BF44991B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jonny.AllDemo.SingleMiddleware", "src\middleware\Jonny.AllDemo.SingleMiddleware\Jonny.AllDemo.SingleMiddleware.csproj", "{BF15D359-7A79-4251-AAFB-6C4BF44991B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LambdaExpression", "LambdaExpression", "{2C7779B6-7AEA-4DAD-93C1-0F7A8D160454}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jonny.AllDemo.LambdaExpression", "src\Jonny.AllDemo.LambdaExpression\Jonny.AllDemo.LambdaExpression.csproj", "{3BEDC19F-1ABD-4C24-9AF8-19DF0288EE74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jonny.AllDemo.LambdaExpression", "src\Jonny.AllDemo.LambdaExpression\Jonny.AllDemo.LambdaExpression.csproj", "{3BEDC19F-1ABD-4C24-9AF8-19DF0288EE74}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "netcore-environment", "netcore-environment", "{F0FAC50D-A9C0-4DC3-A9BD-B83BF5D6E7D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jonny.AllDemo.NetCoreEnvironment", "src\netcore-environment\Jonny.AllDemo.NetCoreEnvironment\Jonny.AllDemo.NetCoreEnvironment.csproj", "{6AA0C77D-DAF1-42AB-AC05-5C878F00DA23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jonny.AllDemo.NetCoreEnvironment", "src\netcore-environment\Jonny.AllDemo.NetCoreEnvironment\Jonny.AllDemo.NetCoreEnvironment.csproj", "{6AA0C77D-DAF1-42AB-AC05-5C878F00DA23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "leetcode", "leetcode", "{02EAEA77-DAB7-4EE2-A2B9-EC6438AFA73F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jonny.LeetCode", "src\leetcode\Jonny.LeetCode\Jonny.LeetCode.csproj", "{BBAF9DB3-7267-4106-96CF-368094B7E534}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".net5", ".net5", "{E73B61C0-917C-41E5-9C00-1AFB3E14B8FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -229,6 +235,10 @@ Global
 		{6AA0C77D-DAF1-42AB-AC05-5C878F00DA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AA0C77D-DAF1-42AB-AC05-5C878F00DA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AA0C77D-DAF1-42AB-AC05-5C878F00DA23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBAF9DB3-7267-4106-96CF-368094B7E534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBAF9DB3-7267-4106-96CF-368094B7E534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBAF9DB3-7267-4106-96CF-368094B7E534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBAF9DB3-7267-4106-96CF-368094B7E534}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -280,6 +290,9 @@ Global
 		{3BEDC19F-1ABD-4C24-9AF8-19DF0288EE74} = {2C7779B6-7AEA-4DAD-93C1-0F7A8D160454}
 		{F0FAC50D-A9C0-4DC3-A9BD-B83BF5D6E7D7} = {7502D5C6-D2BE-439E-B7A0-91DCDD89B749}
 		{6AA0C77D-DAF1-42AB-AC05-5C878F00DA23} = {F0FAC50D-A9C0-4DC3-A9BD-B83BF5D6E7D7}
+		{02EAEA77-DAB7-4EE2-A2B9-EC6438AFA73F} = {7502D5C6-D2BE-439E-B7A0-91DCDD89B749}
+		{BBAF9DB3-7267-4106-96CF-368094B7E534} = {02EAEA77-DAB7-4EE2-A2B9-EC6438AFA73F}
+		{E73B61C0-917C-41E5-9C00-1AFB3E14B8FC} = {7502D5C6-D2BE-439E-B7A0-91DCDD89B749}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {756434BA-0B0E-4D64-8EBB-39203B3C2515}
