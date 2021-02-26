@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace CancelationTokenDemo
         {
             // 限制处理5秒
             var tokenSource1 = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-            var url = "https://www.baidu.com";
+            var url = "https://www.baidu.com/";
             // 1、测试没有CancellationToken情况
             await DownloadWebsite1(url, 100, tokenSource1.Token);
             Console.WriteLine("========================================分割线=================================================");
@@ -27,18 +28,29 @@ namespace CancelationTokenDemo
             // 任意一个任务取消 则取消所有任务
             List<CancellationTokenSource> tokens = new List<CancellationTokenSource>
             {
-                new CancellationTokenSource(TimeSpan.FromSeconds(2)),
-                new CancellationTokenSource(TimeSpan.FromSeconds(4)),
-                new CancellationTokenSource(TimeSpan.FromSeconds(6)),
-                new CancellationTokenSource(TimeSpan.FromSeconds(8))
+                new CancellationTokenSource(TimeSpan.FromSeconds(10)),
+                new CancellationTokenSource(TimeSpan.FromSeconds(20)),
+                new CancellationTokenSource(TimeSpan.FromSeconds(30)),
+                new CancellationTokenSource(TimeSpan.FromSeconds(40))
             };
 
             var compositeCancel = CancellationTokenSource.CreateLinkedTokenSource(tokens[0].Token, tokens[1].Token, tokens[2].Token, tokens[3].Token);
-            TestLinkedTokenSource(compositeCancel.Token);
+            // TODO:测试下面两种方式时只能选择一种，也可以自己重新定义Tokens
+            #region 等待的方式+LinkedTokenSource自行取消（经过测试最小终止时间终止）
+            // 1、等待的方式，串联Token中哪一个先终止整个就终止
+            // await TestLinkedTokenSource(compositeCancel.Token);
+            #endregion
+
+            #region 不等待的方式+手动取消任务
+            // 2、不等待的方式
             // 手动测试终止任务，随机调用其中一个Cancel
+            TestLinkedTokenSource(compositeCancel.Token);
+            await Task.Delay(TimeSpan.FromSeconds(1));
             Random random = new Random();
             var randomIndex = random.Next(0, tokens.Count);
             tokens[randomIndex].Cancel();
+            #endregion
+
             Console.WriteLine(string.Format("终止第{0}Token", randomIndex));
             #endregion
 
@@ -85,15 +97,25 @@ namespace CancelationTokenDemo
             }
         }
 
-        static Task TestLinkedTokenSource(CancellationToken cancellationToken)
+        static async Task TestLinkedTokenSource(CancellationToken cancellationToken)
         {
-            int times = 1;
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             while (!cancellationToken.IsCancellationRequested)
             {
-                Console.WriteLine(times++);
+                using HttpClient httpClient = new HttpClient();
+                // 当cancellationToken取消的时候GetStringAsync内部还会继续执行
+                var html = await httpClient.GetStringAsync(new Uri("https://www.sogo.com/"));
+                Console.WriteLine(html.Substring(0, 50));
+                // 或者直接抛出异常
+                //cancellationToken.ThrowIfCancellationRequested();
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    break;
+                }
             }
-            Console.WriteLine("===========================外部终止===========================");
-            return Task.CompletedTask;
+            stopwatch.Stop();
+            Console.WriteLine("===========================外部终止,Delay值：{0}===========================", stopwatch.ElapsedMilliseconds);
         }
     }
 }
