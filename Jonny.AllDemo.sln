@@ -113,7 +113,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncDemo", "src\.net5\Asyn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CancelationTokenDemo", "src\.net5\CancelationTokenDemo\CancelationTokenDemo.csproj", "{91C40BC0-7910-4F3C-A429-8C12161BFFBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jonny.Fomrs.ThemeDemo", "src\winform\Jonny.Fomrs.ThemeDemo\Jonny.Fomrs.ThemeDemo.csproj", "{E0169E33-2F64-42AF-BADF-77768053F502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jonny.Fomrs.ThemeDemo", "src\winform\Jonny.Fomrs.ThemeDemo\Jonny.Fomrs.ThemeDemo.csproj", "{E0169E33-2F64-42AF-BADF-77768053F502}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackOverFlow66467827", "src\mvc.viewcomponent\StackOverFlow66467827\StackOverFlow66467827.csproj", "{E70D3139-96AF-48E1-9616-0AF79362E89A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonNet.Test", "src\.net5\JsonNet.Test\JsonNet.Test.csproj", "{3E335131-4EB6-47FA-94D2-1E3C075E45CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -257,6 +261,14 @@ Global
 		{E0169E33-2F64-42AF-BADF-77768053F502}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0169E33-2F64-42AF-BADF-77768053F502}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0169E33-2F64-42AF-BADF-77768053F502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E70D3139-96AF-48E1-9616-0AF79362E89A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70D3139-96AF-48E1-9616-0AF79362E89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70D3139-96AF-48E1-9616-0AF79362E89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70D3139-96AF-48E1-9616-0AF79362E89A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E335131-4EB6-47FA-94D2-1E3C075E45CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E335131-4EB6-47FA-94D2-1E3C075E45CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E335131-4EB6-47FA-94D2-1E3C075E45CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E335131-4EB6-47FA-94D2-1E3C075E45CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -314,6 +326,8 @@ Global
 		{2F113162-D305-47C9-9923-E4D689FD297F} = {E73B61C0-917C-41E5-9C00-1AFB3E14B8FC}
 		{91C40BC0-7910-4F3C-A429-8C12161BFFBC} = {E73B61C0-917C-41E5-9C00-1AFB3E14B8FC}
 		{E0169E33-2F64-42AF-BADF-77768053F502} = {7268928C-9F60-4639-B603-66FE557F2A83}
+		{E70D3139-96AF-48E1-9616-0AF79362E89A} = {41F55BBB-D2E0-4A81-B323-799A76C2D786}
+		{3E335131-4EB6-47FA-94D2-1E3C075E45CD} = {E73B61C0-917C-41E5-9C00-1AFB3E14B8FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {756434BA-0B0E-4D64-8EBB-39203B3C2515}

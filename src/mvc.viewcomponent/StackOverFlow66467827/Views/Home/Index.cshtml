@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <button type="button" onclick="location.href='@Url.Action("Index", "Button")'">Button1</button>
+    <br />
+    <button type="button" onclick="@Url.Action("Index","Botton")">Go to button page</button>
+    <br />
+    <a href="@Url.Action("Index","Botton")">Go to button page with html elemnt a</a>
+    <br />
+    @Html.ActionLink("go botton", "Index", "Botton")
+</div>
