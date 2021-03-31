@@ -11,6 +11,12 @@ namespace Jonny.AllDemo.OptionsConfig.Services
         protected readonly IdentityClientOption _identityMonitor;
         protected readonly IdentityClientOption _identitySnapshot;
         protected readonly IdentityClientOption _identity;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="optionsMonitor">只要Option值一变，那么获取的时候就会变</param>
+        /// <param name="optionsSnapshot">同一个Scope中更改Option时值时不会变的</param>
+        /// <param name="options"></param>
         public UserAppService(IOptionsMonitor<IdentityClientOption> optionsMonitor,
             IOptionsSnapshot<IdentityClientOption> optionsSnapshot,
             IOptions<IdentityClientOption> options)

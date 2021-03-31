@@ -79,7 +79,7 @@ namespace Jonny.AllDemo.OptionsConfig
             #endregion
             #region 使用ChangeToken热更新监控配置改变
             {
-                var configRoot = builder.Build();
+                //var configRoot = builder.Build();
                 //var token = configRoot.GetReloadToken();
                 //token.RegisterChangeCallback(state =>
                 //{
@@ -123,109 +123,132 @@ namespace Jonny.AllDemo.OptionsConfig
             }
             #endregion
             #region 实体绑定+验证+修改配置
-            {
-                var configRoot = builder.Build();
-                Host.CreateDefaultBuilder(args)
-                    .ConfigureServices(services =>
-                    {
-                        services.AddScoped<IUserAppService, UserAppService>();
-                        //services.AddSingleton<IUserAppService, UserAppService>();
-                        var defaultOption = configRoot.GetSection("IdentityClients:Default");
-                        //绑定实体
-                        {
-                            //这种方式任何生命周期注册都可以使用IOptions IOptionsSnapshot IOptionsMonitor
-                            //services.AddOptions<IdentityClientOption>().Bind(defaultOption);
-                            //使用Configure的方式绑定
-                            //services.Configure<IdentityClientOption>(defaultOption);
+            //{
+            //    var configRoot = builder.Build();
+            //    Host.CreateDefaultBuilder(args)
+            //        .ConfigureServices(services =>
+            //        {
+            //            services.AddScoped<IUserAppService, UserAppService>();
+            //            //services.AddSingleton<IUserAppService, UserAppService>();
+            //            var defaultOption = configRoot.GetSection("IdentityClients:Default");
+            //            //绑定实体
+            //            {
+            //                //这种方式任何生命周期注册都可以使用IOptions IOptionsSnapshot IOptionsMonitor
+            //                //services.AddOptions<IdentityClientOption>().Bind(defaultOption);
+            //                //使用Configure的方式绑定
+            //                //services.Configure<IdentityClientOption>(defaultOption);
 
-                            //验证--通过Validate()方法验证
-                            services.AddOptions<IdentityClientOption>()
-                            .Bind(defaultOption)
-                            .ValidateDataAnnotations();
-                            //.Validate(option =>
-                            //{
-                            //    if (option.GrantType == "password")
-                            //    {
-                            //        return true;
-                            //    }
-                            //    return false;
-                            //});
+            //                //验证--通过Validate()方法验证
+            //                services.AddOptions<IdentityClientOption>()
+            //                .Bind(defaultOption)
+            //                .ValidateDataAnnotations();
+            //                //.Validate(option =>
+            //                //{
+            //                //    if (option.GrantType == "password")
+            //                //    {
+            //                //        return true;
+            //                //    }
+            //                //    return false;
+            //                //});
 
-                            //验证-- > 通过注册Validator来验证
-                            //services.AddSingleton<IValidateOptions<IdentityClientOption>, IdentityValitate>();
-                            //测试获取
-                            var userApp = services.BuildServiceProvider().GetRequiredService<IUserAppService>();
-                            var token = configRoot.GetReloadToken();
-                            token.RegisterChangeCallback(state =>
-                            {
-                                var userNewApp = services.BuildServiceProvider().GetRequiredService<IUserAppService>();                                                     
-                            }, configRoot);
-                            var users = userApp.GetUsers();
-                            foreach (var user in users)
-                            {
-                                Console.WriteLine($"用户列表{users.IndexOf(user)}:{user.ToString()}");
-                            }
-                        }
-                        #region TryAdd服务
-                        {
-                            //当容器中注册了IUserAppService后是不会再注册的
-                            //services.AddSingleton<IUserAppService, UserAppService>();
-                            //services.TryAddScoped<IUserAppService, UserAppService>();                        
-                        }
-                        #endregion
-                        #region 替换服务
-                        {
-                            //services.AddTransient<IUserAppService, UserAppNewService>();
-                            //services.Replace(ServiceDescriptor.Scoped<IUserAppService, UserAppNewService>());
-                            ////测试获取
-                            //var userApp = services.BuildServiceProvider().GetRequiredService<IUserAppService>();
-                            //var users = userApp.GetUsers();
-                            //foreach (var user in users)
-                            //{
-                            //    Console.WriteLine($"用户列表{users.IndexOf(user)}:{user.ToString()}");
-                            //}
-                        }
-                        #region 移除某一个所有注册的服务 
-                        {
-                            //每次都会添加一个新的
-                            //services.AddTransient<IUserAppService, UserAppService>();
-                            //services.AddScoped<IUserAppService, UserAppService>();
-                            //services.AddTransient<IUserAppService, UserAppNewService>();
-                            //Console.WriteLine("==========IUserAppService移除之前输出=============");
-                            //var cnt1 = services.Count;
-                            //Console.WriteLine($"IUserAppService移除前数量：{cnt1}");
-                            //Console.WriteLine("IUserAppService详情：");
-                            //var users1 = services.BuildServiceProvider().GetServices<IUserAppService>();
-                            //foreach (var user in users1)
-                            //{
-                            //    Console.WriteLine($"Type:{user.GetType()}，HashCode：{user.GetHashCode()}");
-                            //}
-                            ////两种方式一致
-                            //services.RemoveAll<IUserAppService>();
-                            //services.RemoveAll(typeof(IUserAppService));
+            //                //验证-- > 通过注册Validator来验证
+            //                //services.AddSingleton<IValidateOptions<IdentityClientOption>, IdentityValitate>();
+            //                //测试获取
+            //                var userApp = services.BuildServiceProvider().GetRequiredService<IUserAppService>();
+            //                var token = configRoot.GetReloadToken();
+            //                token.RegisterChangeCallback(state =>
+            //                {
+            //                    var userNewApp = services.BuildServiceProvider().GetRequiredService<IUserAppService>();
+            //                }, configRoot);
+            //                var users = userApp.GetUsers();
+            //                foreach (var user in users)
+            //                {
+            //                    Console.WriteLine($"用户列表{users.IndexOf(user)}:{user.ToString()}");
+            //                }
+            //            }
+            //            #region TryAdd服务
+            //            {
+            //                //当容器中注册了IUserAppService后是不会再注册的
+            //                //services.AddSingleton<IUserAppService, UserAppService>();
+            //                //services.TryAddScoped<IUserAppService, UserAppService>();                        
+            //            }
+            //            #endregion
+            //            #region 替换服务
+            //            {
+            //                //services.AddTransient<IUserAppService, UserAppNewService>();
+            //                //services.Replace(ServiceDescriptor.Scoped<IUserAppService, UserAppNewService>());
+            //                ////测试获取
+            //                //var userApp = services.BuildServiceProvider().GetRequiredService<IUserAppService>();
+            //                //var users = userApp.GetUsers();
+            //                //foreach (var user in users)
+            //                //{
+            //                //    Console.WriteLine($"用户列表{users.IndexOf(user)}:{user.ToString()}");
+            //                //}
+            //            }
+            //            #region 移除某一个所有注册的服务 
+            //            {
+            //                //每次都会添加一个新的
+            //                //services.AddTransient<IUserAppService, UserAppService>();
+            //                //services.AddScoped<IUserAppService, UserAppService>();
+            //                //services.AddTransient<IUserAppService, UserAppNewService>();
+            //                //Console.WriteLine("==========IUserAppService移除之前输出=============");
+            //                //var cnt1 = services.Count;
+            //                //Console.WriteLine($"IUserAppService移除前数量：{cnt1}");
+            //                //Console.WriteLine("IUserAppService详情：");
+            //                //var users1 = services.BuildServiceProvider().GetServices<IUserAppService>();
+            //                //foreach (var user in users1)
+            //                //{
+            //                //    Console.WriteLine($"Type:{user.GetType()}，HashCode：{user.GetHashCode()}");
+            //                //}
+            //                ////两种方式一致
+            //                //services.RemoveAll<IUserAppService>();
+            //                //services.RemoveAll(typeof(IUserAppService));
 
-                            //Console.WriteLine("==========IUserAppService详情移除后输出=============");
-                            //var cnt2 = services.Count;
-                            //Console.WriteLine($"IUserAppService详情移除后数量：{cnt2}");
-                            //Console.WriteLine("IUserAppService详情：");
-                            //var users2 = services.BuildServiceProvider().GetServices<IUserAppService>();
-                            //foreach (var user in users2)
-                            //{
-                            //    Console.WriteLine($"Type:{user.GetType()}，HashCode：{user.GetHashCode()}");
-                            //}
-                        }
-                        #endregion
-                        #region 泛型注册
-                        {
+            //                //Console.WriteLine("==========IUserAppService详情移除后输出=============");
+            //                //var cnt2 = services.Count;
+            //                //Console.WriteLine($"IUserAppService详情移除后数量：{cnt2}");
+            //                //Console.WriteLine("IUserAppService详情：");
+            //                //var users2 = services.BuildServiceProvider().GetServices<IUserAppService>();
+            //                //foreach (var user in users2)
+            //                //{
+            //                //    Console.WriteLine($"Type:{user.GetType()}，HashCode：{user.GetHashCode()}");
+            //                //}
+            //            }
+            //            #endregion
+            //            #region 泛型注册
+            //            {
 
-                        }
-                        #endregion
-                        #endregion
-                    }).Build().Run();
+            //            }
+            //            #endregion
+            //            #endregion
+            //        }).Build().Run();
 
-            }
+            //}
+            #endregion
+
+
+            #region 自定义扩展Provider
+            builder.AddAppConfigFile("App.config");
+            var appConfig = builder.Build();
+            Person person = new Person();
+            appConfig.Bind(person);
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(person));
             #endregion
             Console.ReadLine();
         }
     }
+
+    class Person
+    {
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        // 不知道这里使PCOC为啥不行
+        public string[] Address { get; set; }
+    }
+    //class Addresses
+    //{
+    //    public string Site { get; set; }
+    //}
 }

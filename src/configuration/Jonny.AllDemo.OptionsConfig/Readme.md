@@ -445,3 +445,7 @@ token.RegisterChangeCallback(state =>
 ## 6 总结
 以上所有内容的测试和文章记录多多少少花了两个晚上的时间，希望能够快速的给园友们带来帮助，写这篇文章让我对配置框架有了一个更深的认知，写了差不多3个小时左右，写作不易希望得园友们的支持点赞和关注。
 文章中提到了依赖注入也使用了依赖注入的测试，后面会对依赖注入框架分享一篇文章。
+
+## 7 2021/3/3补充
+
+自己扩展`AppConfigConfigurationProvider`、`AppConfigStreamConfigurationProvider`。
