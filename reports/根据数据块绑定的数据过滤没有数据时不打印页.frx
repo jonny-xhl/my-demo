@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" StartReportEvent="_StartReport" ReportInfo.Created="04/16/2021 22:35:08" ReportInfo.Modified="04/16/2021 22:47:15" ReportInfo.CreatorVersion="1.9.9.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+    private void VisiblePageByData(){
+      foreach (Base obj in Report.AllObjects)
+      {
+        if(obj is DataBand){
+          DataBand dataBand=(DataBand)obj;
+          dataBand.DataSource.Init(dataBand.Filter);
+          if (dataBand.DataSource.RowCount==0)
+          {
+            dataBand.Page.Visible=false;
+          }
+        }
+      }
+    }
+
+    private void _StartReport(object sender, EventArgs e)
+    {
+        VisiblePageByData();
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlq+rW0RkboK+/8CKGGYUID3ctBV8q9SvKYxl3iiE7vBnh7Tgou0+4WFf3NfmPSvHVFPTWpKEOe38fTMwwzrmEyM68KlXIf5RC7PjVGuwWyy5Di3tFCNLIKpZm8plWBvtH/IQXM/1eHM+gQaXFkPz4pK2AuMC5qP/Q/vjr3bJ0F4P9XwIKBhQvyvXRPMuX//xfR">
+      <TableDataSource Name="T0310" DataType="System.Int32" Enabled="true" TableName="T0310">
+        <Column Name="ID" DataType="System.Int32"/>
+        <Column Name="品名" DataType="System.String"/>
+        <Column Name="规格" DataType="System.String"/>
+        <Column Name="颜色" DataType="System.String"/>
+        <Column Name="数量" DataType="System.Int32"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="56.7">
+      <TextObject Name="Text2" Left="28.35" Top="18.9" Width="491.4" Height="18.9" Text="根据数据块绑定的数据过滤没有数据时不打印页" Font="宋体, 14pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="59.68" Width="718.2" Height="75.6">
+      <TextObject Name="Text5" Left="28.35" Top="9.45" Width="491.4" Height="18.9" Text="关于数据源结构参考:https://blog.csdn.net/xhl_james/article/details/114632593" Font="宋体, 9pt"/>
+      <TableObject Name="Table5" Left="28.35" Top="47.25" Width="491.4" Height="28.35">
+        <TableColumn Name="Column21" Width="98.28"/>
+        <TableColumn Name="Column22" Width="98.28"/>
+        <TableColumn Name="Column23" Width="98.28"/>
+        <TableColumn Name="Column24" Width="98.28"/>
+        <TableColumn Name="Column25" Width="98.28"/>
+        <TableRow Name="Row13" Height="28.35">
+          <TableCell Name="Cell66" Text="ID" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell67" Text="品名" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell68" Text="规格" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell69" Text="颜色" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell70" Text="数量" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="138.25" Width="718.2" Height="47.25" DataSource="T0310" Filter="[T0310.品名]==&quot;ddd&quot;">
+      <TableObject Name="Table6" Left="28.35" Width="491.4" Height="28.35">
+        <TableColumn Name="Column26" Width="98.28"/>
+        <TableColumn Name="Column27" Width="98.28"/>
+        <TableColumn Name="Column28" Width="98.28"/>
+        <TableColumn Name="Column29" Width="98.28"/>
+        <TableColumn Name="Column30" Width="98.28"/>
+        <TableRow Name="Row14" Height="28.35">
+          <TableCell Name="Cell71" Text="[T0310.ID]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell72" Text="[T0310.品名]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell73" Text="[T0310.规格]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell74" Text="[T0310.颜色]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell75" Text="[T0310.数量]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="188.48" Width="718.2" Height="18.9">
+      <TextObject Name="Text1" Left="28.35" Width="538.65" Height="18.9" Text="该页绑定了数据进行了&quot;过滤&quot;,在代码中动态使用&quot;过滤条件&quot;进行&quot;Init()&quot;操作。" VertAlign="Center" Font="宋体, 10pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+  <ReportPage Name="Page2">
+    <ReportTitleBand Name="ReportTitle2" Width="718.2" Height="37.8">
+      <TextObject Name="Text3" Left="75.6" Top="9.45" Width="491.4" Height="18.9" Text="根据数据块绑定的数据过滤没有数据时不打印页" Font="宋体, 14pt, style=Bold"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader2" Top="40.78" Width="718.2" Height="66.15">
+      <TextObject Name="Text4" Left="66.15" Width="491.4" Height="18.9" Text="关于数据源结构参考:https://blog.csdn.net/xhl_james/article/details/114632593" Font="宋体, 9pt"/>
+      <TableObject Name="Table3" Left="66.15" Top="37.8" Width="491.4" Height="28.35">
+        <TableColumn Name="Column11" Width="98.28"/>
+        <TableColumn Name="Column12" Width="98.28"/>
+        <TableColumn Name="Column13" Width="98.28"/>
+        <TableColumn Name="Column14" Width="98.28"/>
+        <TableColumn Name="Column15" Width="98.28"/>
+        <TableRow Name="Row11" Height="28.35">
+          <TableCell Name="Cell56" Text="ID" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell57" Text="品名" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell58" Text="规格" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell59" Text="颜色" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell60" Text="数量" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </PageHeaderBand>
+    <DataBand Name="Data2" Top="109.9" Width="718.2" Height="47.25" DataSource="T0310">
+      <TableObject Name="Table2" Left="66.15" Width="491.4" Height="28.35">
+        <TableColumn Name="Column6" Width="98.28"/>
+        <TableColumn Name="Column7" Width="98.28"/>
+        <TableColumn Name="Column8" Width="98.28"/>
+        <TableColumn Name="Column9" Width="98.28"/>
+        <TableColumn Name="Column10" Width="98.28"/>
+        <TableRow Name="Row6" Height="28.35">
+          <TableCell Name="Cell51" Text="[T0310.ID]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell52" Text="[T0310.品名]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell53" Text="[T0310.规格]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell54" Text="[T0310.颜色]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+          <TableCell Name="Cell55" Text="[T0310.数量]" HorzAlign="Center" VertAlign="Center" Font="宋体, 9pt"/>
+        </TableRow>
+      </TableObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter2" Top="160.13" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>
