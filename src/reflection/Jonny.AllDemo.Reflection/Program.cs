@@ -1,14 +1,13 @@
 ﻿using Jonny.AllDemo.Reflection.TestModel;
 using System;
 using System.Security.Cryptography;
-using
-     System.Text;
+using System.Text;
 
 namespace Jonny.AllDemo.Reflection
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main1(string[] args)
         {
             //var pubs = TenantManagementPermissions.GetAll();
             var pwd = "zjcoo1129";
