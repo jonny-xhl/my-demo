@@ -7,7 +7,7 @@ namespace Jonny.AllDemo.Reflection.Mocks
 {
     public class ModuleMock
     {
-        public static void Main()
+        public static void Main1()
         {
             ModuleMock module = new ModuleMock();
             Module module1 = module.GetType().Module;
